@@ -1,6 +1,6 @@
 def largest_prime_factor(num)
   factors_of_num = get_factors_of_num(num)
-  answer = largest_prime_number(factors_of_num)
+  largest_prime_number(factors_of_num)
 end
 
 def get_factors_of_num(num)
@@ -11,8 +11,7 @@ def largest_prime_number(factors_of_num)
   i = 0
   while factors_of_num.length > 0 
     checking_num = factors_of_num.reverse[i]
-    checked_num = is_prime(checking_num)
-    if checked_num == true
+    if is_prime(checking_num)  
       return checking_num
     else
       i += 1
@@ -21,12 +20,7 @@ def largest_prime_number(factors_of_num)
 end  
 
 def is_prime(num)
-  for i in 2..num-1
-    if num % i == 0
-      return false
-    end
-  end
-  true
+  (2..num/2).none? { |divisor| num % divisor == 0 }
 end
 
 #Big O solution using Prime Library:
